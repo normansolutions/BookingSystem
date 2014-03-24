@@ -24,7 +24,7 @@
         <h1 id="eventName" data-eventId="@eventToBook">@e.eventName</h1>
         <h4 id="eventDate">Date: @e.datestart.ToString("D")</h4>
         <h5 id="eventAdult" data-adultcost="@e.eventAdultTicket">Adults: @e.eventAdultTicket.ToString("C")</h5>
-        <h5 id="eventChild" data-childcost="@e.eventChildTicket">Child: @e.eventChildTicket.ToString("C")</h5>
+        <h5 class="hidden" id="eventChild" data-childcost="@e.eventChildTicket">Child: @e.eventChildTicket.ToString("C")</h5>
         <h5 id="eventStaff" data-staffcost="@e.eventStaffTicket">Staff: @e.eventStaffTicket.ToString("C")</h5>
         <h4 class="remaining">Total Tickets Remaining: <span class="actualTotal"></span></h4>
         <hr />
@@ -107,7 +107,7 @@
         </div>
     </form>
 
-    <form class="custom">
+    <form class="custom hidden">
         <!-- Custom Selects -->
         <select style="display: none;" id="customDropdownChildren">
             <option value="0" selected>No Child Ticket</option>
@@ -122,7 +122,8 @@
             <option value="9">9 Children Tickets</option>
         </select>
         <div class="custom dropdown">
-            <a href="#" class="current">Children Tickets
+            <a href="#" class="current">
+                Children Tickets
             </a>
             <a href="#" class="selector"></a>
             <ul>
@@ -173,7 +174,7 @@
         </div>
     </form>
 
-    <form class="custom">
+    <form class="custom hidden">
         <!-- Custom Selects -->
         <select style="display: none;" id="customDropdownPayment">
             <option value="On The School Bill" selected>On The School Bill</option>

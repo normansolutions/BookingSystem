@@ -85,12 +85,20 @@ public class BookingHub : Hub
         }   
 
 
+        //WebMail.Send(
+        //    to: name,
+        //    bcc:"boxofficeconfirmation@st-marys-shaftesbury.co.uk",
+        //    from: "boxoffice@st-marys-shaftesbury.co.uk",
+        //    subject: "Booking Confirmation",
+        //    body: "Dear " + fullName + "<br/><br/>This email confirms that you have booked: <br/><br/> " + adults + ": adult tickets. <br/>" + children + ": children tickets. <br/>" + staff + ": staff tickets. <br/>For the " + eventNameForEmail + " performance.<br/>Date: " + eventDateForEmail + "<br/>Total Cost: £" + (string.Format("{0:f2}", totalCost)) + "<br/>Payment Method: " + payment + "<br/><br/>We hope you enjoy the show!<br/><br/>(please make cheques payable to 'St Mary’s School Shaftesbury Trust')<br/><br/><br/>IF YOU BELIEVE YOU HAVEN'T PLACED THIS BOOKING, THEN PLEASE COULD YOU CONTACT THE SCHOOL ASAP ON TEL: 44 (0)1747 852416."
+        //);
+
         WebMail.Send(
             to: name,
-            bcc:"boxofficeconfirmation@st-marys-shaftesbury.co.uk",
+            bcc: "boxofficeconfirmation@st-marys-shaftesbury.co.uk",
             from: "boxoffice@st-marys-shaftesbury.co.uk",
             subject: "Booking Confirmation",
-            body: "Dear " + fullName + "<br/><br/>This email confirms that you have booked: <br/><br/> " + adults + ": adult tickets. <br/>" + children + ": children tickets. <br/>" + staff + ": staff tickets. <br/>For the " + eventNameForEmail + " performance.<br/>Date: " + eventDateForEmail + "<br/>Total Cost: £" + (string.Format("{0:f2}", totalCost)) + "<br/>Payment Method: " + payment + "<br/><br/>We hope you enjoy the show!<br/><br/>(please make cheques payable to 'St Mary’s School Shaftesbury Trust')<br/><br/><br/>IF YOU BELIEVE YOU HAVEN'T PLACED THIS BOOKING, THEN PLEASE COULD YOU CONTACT THE SCHOOL ASAP ON TEL: 44 (0)1747 852416."
+            body: "Dear " + fullName + "<br/><br/>This email confirms that you have booked: <br/><br/> " + adults + ": adult tickets. <br/>" + staff + ": staff tickets. <br/>For the " + eventNameForEmail + " event.<br/>Date: " + eventDateForEmail + "<br/>Total Cost: £" + (string.Format("{0:f2}", totalCost)) + "<br/><br/>We hope you enjoy the event!<br/><br/><br/><br/><br/>IF YOU BELIEVE YOU HAVEN'T PLACED THIS BOOKING, THEN PLEASE COULD YOU CONTACT THE SCHOOL ASAP ON TEL: 44 (0)1747 852416."
         );
 
     }
