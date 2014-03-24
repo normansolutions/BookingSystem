@@ -1,0 +1,224 @@
+﻿@{
+    Layout = "_SiteLayout.cshtml";
+    Page.Title = "Book Tickets";
+
+    var eventToBook = UrlData[0].IsInt() ? UrlData[0].AsInt() : 1;
+    var emailAddress = Request.QueryString["e"];
+
+    var db = Database.Open("Booking");
+    var availabilitySQL = "select * from BookingSys_TicketsAvailable where EventID = @0";
+
+    var available = db.Query(availabilitySQL, eventToBook);
+
+    EncryptFunction encryptFunction = new EncryptFunction();
+    var decryptedEmail = encryptFunction.Decrypt(emailAddress, "41kls83j");
+
+    Response.Cache.SetExpires(DateTime.Now.AddSeconds(3));
+    Response.Cache.SetCacheability(HttpCacheability.Public);    
+    
+    
+}
+<section id="mainText">
+    @foreach (var e in available)
+    {
+        <h1 id="eventName" data-eventId="@eventToBook">@e.eventName</h1>
+        <h4 id="eventDate">Date: @e.datestart.ToString("D")</h4>
+        <h5 id="eventAdult" data-adultcost="@e.eventAdultTicket">Adults: @e.eventAdultTicket.ToString("C")</h5>
+        <h5 id="eventChild" data-childcost="@e.eventChildTicket">Child: @e.eventChildTicket.ToString("C")</h5>
+        <h5 id="eventStaff" data-staffcost="@e.eventStaffTicket">Staff: @e.eventStaffTicket.ToString("C")</h5>
+        <h4 class="remaining">Total Tickets Remaining: <span class="actualTotal"></span></h4>
+        <hr />
+    }
+
+    <div class="twelve columns panel radius">
+        <div class="tags">
+            @try
+            {
+                foreach (var t in available)
+                {
+
+                <h5><u>live</u> graphical display of available tickets represented in groups of <span id="grouping">@t.Grouping.</span></h5>
+                    int ticketCount = t.TotalAvailability;
+                    int groupCount = t.Grouping;
+                    for (int i = 0; i < t.TotalAvailability / groupCount; i++)
+                    {  
+                                          
+                <div class="ticket ticketChange"><span class="circle"></span><span class="inner">@ticketCount</span></div>                         
+                  
+                        ticketCount -= groupCount;
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
+
+        </div>
+    </div>
+
+
+    <form id="bookingForm">
+        <div class="row">
+            <div class="eight columns">
+                <label for="bookingFullName"><strong>Your Full Name:</strong></label>
+                <input class="required" type="text" id="bookingFullName" name="fullname" placeholder="enter name" />
+                <label for="bookingNameChild"><strong>Your Daughter's Name (or connection to St Mary's):</strong></label>
+                <input class="required" type="text" id="bookingNameChild" name="daughtername" placeholder="enter eldest daughter's name" />
+                <label for="bookingName"><strong>Your Parent Portal/School Email Address:</strong></label>
+                <input class="required email" type="email" id="bookingName" name="email" placeholder="enter email address" value="" />
+                <label for="bookingNameCheck"><strong>Email Address Confirmation (re-enter email):</strong></label>
+                <input class="required email" equalto='#bookingName' type="email" id="bookingNameCheck" name="confirmemail" placeholder="confirm email address" value="" />
+            </div>
+        </div>
+    </form>
+
+    <form class="custom">
+        <!-- Custom Selects -->
+        <select style="display: none;" id="customDropdownAdults">
+            <option value="0" selected>No Adult Ticket</option>
+            <option value="1">1 Adult Ticket</option>
+            <option value="2">2 Adult Tickets</option>
+            <option value="3">3 Adult Tickets</option>
+            <option value="4">4 Adult Tickets</option>
+            <option value="5">5 Adult Tickets</option>
+            <option value="6">6 Adult Tickets</option>
+            <option value="7">7 Adult Tickets</option>
+            <option value="8">8 Adult Tickets</option>
+            <option value="9">9 Adult Tickets</option>
+        </select>
+        <div class="custom dropdown">
+            <a href="#" class="current">Adult Tickets
+            </a>
+            <a href="#" class="selector"></a>
+            <ul>
+                <li>No Adult Ticket</li>
+                <li>1 Adult Ticket</li>
+                <li>2 Adult Tickets</li>
+                <li>3 Adult Tickets</li>
+                <li>4 Adult Tickets</li>
+                <li>5 Adult Tickets</li>
+                <li>6 Adult Tickets</li>
+                <li>7 Adult Tickets</li>
+                <li>8 Adult Tickets</li>
+                <li>9 Adult Tickets</li>
+            </ul>
+        </div>
+    </form>
+
+    <form class="custom">
+        <!-- Custom Selects -->
+        <select style="display: none;" id="customDropdownChildren">
+            <option value="0" selected>No Child Ticket</option>
+            <option value="1">1 Child Ticket</option>
+            <option value="2">2 Children Tickets</option>
+            <option value="3">3 Children Tickets</option>
+            <option value="4">4 Children Tickets</option>
+            <option value="5">5 Children Tickets</option>
+            <option value="6">6 Children Tickets</option>
+            <option value="7">7 Children Tickets</option>
+            <option value="8">8 Children Tickets</option>
+            <option value="9">9 Children Tickets</option>
+        </select>
+        <div class="custom dropdown">
+            <a href="#" class="current">Children Tickets
+            </a>
+            <a href="#" class="selector"></a>
+            <ul>
+                <li>No Child Ticket</li>
+                <li>1 Child Ticket</li>
+                <li>2 Children Tickets</li>
+                <li>3 Children Tickets</li>
+                <li>4 Children Tickets</li>
+                <li>5 Children Tickets</li>
+                <li>6 Children Tickets</li>
+                <li>7 Children Tickets</li>
+                <li>8 Children Tickets</li>
+                <li>9 Children Tickets</li>
+            </ul>
+        </div>
+    </form>
+
+    <form class="custom">
+        <!-- Custom Selects -->
+        <select style="display: none;" id="customDropdownStaff">
+            <option value="0" selected>No Staff Ticket</option>
+            <option value="1">1 Staff Ticket</option>
+            <option value="2">2 Staff Tickets</option>
+            <option value="3">3 Staff Tickets</option>
+            <option value="4">4 Staff Tickets</option>
+            <option value="5">5 Staff Tickets</option>
+            <option value="6">6 Staff Tickets</option>
+            <option value="7">7 Staff Tickets</option>
+            <option value="8">8 Staff Tickets</option>
+            <option value="9">9 Staff Tickets</option>
+        </select>
+        <div class="custom dropdown">
+            <a href="#" class="current">Staff Tickets
+            </a>
+            <a href="#" class="selector"></a>
+            <ul>
+                <li>No Staff Ticket</li>
+                <li>1 Staff Ticket</li>
+                <li>2 Staff Tickets</li>
+                <li>3 Staff Tickets</li>
+                <li>4 Staff Tickets</li>
+                <li>5 Staff Tickets</li>
+                <li>6 Staff Tickets</li>
+                <li>7 Staff Tickets</li>
+                <li>8 Staff Tickets</li>
+                <li>9 Staff Tickets</li>
+            </ul>
+        </div>
+    </form>
+
+    <form class="custom">
+        <!-- Custom Selects -->
+        <select style="display: none;" id="customDropdownPayment">
+            <option value="On The School Bill" selected>On The School Bill</option>
+            <option value="Cheque in Advance">Cheque in Advance</option>
+        </select>
+        <div class="custom dropdown">
+            <a href="#" class="current">Payment Method
+            </a>
+            <a href="#" class="selector"></a>
+            <ul>
+                <li>On The School Bill</li>
+                <li>Cheque in Advance</li>
+            </ul>
+        </div>
+    </form>
+
+    <br />
+    <input class="success button" value="Book Tickets" id="bookTickets" />
+</section>
+
+
+<div id="confirm" class="reveal-modal large">
+    <h2>Confirmation</h2>
+    <p class="lead">Please <u>check the details</u> <u><strong>before</strong></u> confirming this booking</p>
+    <p>Once processed, if you wish to amend or cancel your order, you will need to contact the school on <a href="mailto:boxoffice@st-marys-shaftesbury.co.uk?Subject=Box Office Enquiry">boxoffice@st-marys-shaftesbury.co.uk</a></p>
+    <p class="lead">Thank you</p>
+    <hr />
+    <h5>You are about to order:</h5>
+    <h5 class="eventConfirmName"></h5>
+    <h5 class="eventConfirmDate"></h5>
+    <blockquote>
+        <p class="adult"></p>
+        <p class="child"></p>
+        <p class="staff"></p>
+        <p class="totalCost"></p>
+        <p class="payment"></p>
+    </blockquote>
+    <p class="eventConfirmUser"></p>
+    <p></p>
+
+    <input class="success button medium confirmButton" value="Book Tickets" id="confirmTickets" />
+    <input class="alert button medium confirmButton" value="Cancel Booking" id="cancelTickets" />
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+@section baseScript{
+    @System.Web.Optimization.Scripts.Render("~/bundles/booking")
+}

@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "_SiteLayout.cshtml";
+    Page.Title = "Home";
+    var emailAddress = HttpUtility.UrlEncode(Request.QueryString["e"]);
+
+    var db = Database.Open("Booking");
+
+    var eventDetailsSQL = "select * from BookingSys_EventDetailsView where released = @0";
+
+    var eventDetails = db.Query(eventDetailsSQL, '1');
+
+    Response.Cache.SetExpires(DateTime.Now.AddSeconds(3600));
+    Response.Cache.SetCacheability(HttpCacheability.Public);    
+    
+
+}
+<section id="mainText">
+    <div class="row">
+        <div class="nine columns centered">
+            <div class="row">
+			<h2 class="panel text-center">I'm afraid that the St Mary's booking site has now closed, due to all tickets being sold out.</h2>
+			</div>
+        </div>
+    </div>
+</section>
+@section baseScript{
+
+}

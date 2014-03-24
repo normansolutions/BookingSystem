@@ -1,0 +1,107 @@
+﻿/* This is the selector of the sixth box, here's where we establish the measures, background colors, borders and shadows */
+.box6{
+    text-align:center;       
+    min-height: 150px; 
+    margin:4px;
+    padding: 20px;
+    position:relative;
+    background:#fff;
+    background: -webkit-gradient(linear, 0% 20%, 0% 92%, from(#fff), to(#f3f3f3), color-stop(.1,#fff));
+    background: -moz-linear-gradient(0 0 270deg, #fff, #fff 10%, #f3f3f3);
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    -webkit-border-top-left-radius: 60px 5px;
+    -webkit-border-top-right-radius: 60px 5px;
+    -webkit-border-bottom-right-radius: 60px 60px;
+    -moz-border-radius-topleft: 60px 5px;
+    -moz-border-radius-topright: 60px 5px;
+    -moz-border-radius-bottomright: 60px 60px;
+    border-top-left-radius: 60px 5px;
+    border-top-right-radius: 60px 5px;
+    border-bottom-right-radius: 60px 60px;
+    -webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3) ;
+    -moz-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3) ;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.3) ;
+}
+ 
+
+ 
+/* In this pseudo class named box6 we generate the shading of the fold */
+.box6:after{
+    content: '';
+    z-index: -10;
+    width: 100px;
+    height: 100px;
+    position:absolute;
+    bottom:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    -webkit-box-shadow: 20px 20px 8px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 20px 20px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 20px 20px 8px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(0deg)
+                        translate(-45px,-20px)
+                        skew(20deg);
+    -moz-transform: rotate(0deg)
+                        translate(-45px,-20px)
+                        skew(20deg);
+    -o-transform: rotate(0deg)
+                        translate(-45px,-20px)
+                        skew(20deg);
+    transform: rotate(0deg)
+                        translate(-45px,-20px)
+                        skew(20deg);
+}
+ 
+/* On this class we establish the shadow of the top right section */
+.box6_corner_lf{
+    width: 100px;
+    height: 100px;
+    top:0; left:0;
+    position:absolute;
+    z-index:-6;
+    display: inline-block;
+    -webkit-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: -10px -10px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: -10px -10px 20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(2deg)
+                        translate(20px,25px)
+                        skew(20deg);
+    -moz-transform: rotate(2deg)
+                        translate(20px,20px)
+                        skew(20deg);
+    -o-transform: rotate(2deg)
+                        translate(20px,20px)
+                        skew(20deg);
+    transform: rotate(2deg)
+                        translate(20px,20px)
+                        skew(20deg);
+}
+ 
+/* On this class we define the shadow of the top left area */
+.box6_corner_rt{
+    content: '';
+    width: 50px;
+    height: 50px;
+    top:0; right:0;
+    position:absolute;
+    display: inline-block;
+    z-index:-6;
+    -webkit-box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 10px -10px 18px rgba(0, 0, 0, 0.2);
+    box-shadow: 10px -10px 8px rgba(0, 0, 0, 0.2);
+    -webkit-transform: rotate(2deg)
+                        translate(-14px,20px)
+                        skew(-20deg);
+    -moz-transform: rotate(2deg)
+                        translate(-14px,15px)
+                        skew(-20deg);
+    -o-transform: rotate(2deg)
+                        translate(-14px,15px)
+                        skew(-20deg);
+    transform: rotate(2deg)
+                        translate(-14px,15px)
+                        skew(-20deg);
+}

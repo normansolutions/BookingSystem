@@ -1,0 +1,190 @@
+﻿.ticket {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    position: relative !important;
+    background: #0a8266;
+    float: left;
+    padding: 7px 3px;
+    margin: 0 5px 5px 0;
+}
+
+    .ticket:after {
+        content: "";
+        position: absolute !important;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        border-right: #F2F2F2 7px solid;
+        border-bottom: #F2F2F2 7px solid;
+        -moz-border-radius: 0 0 20px 0;
+        -webkit-border-radius: 0 0 20px 0;
+        border-radius: 0 0 20px 0;
+    }
+
+    .ticket:before {
+        content: "";
+        position: absolute !important;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        border-left: #F2F2F2 7px solid;
+        border-bottom: #F2F2F2 7px solid;
+        -moz-border-radius: 0 0 0 20px;
+        -webkit-border-radius: 0 0 0 20px;
+        border-radius: 0 0 0 20px;
+    }
+
+    .ticket .inner {
+        -moz-outline: 1px rgba(255,255,255,0.4) dashed;
+        outline: 1px rgba(255,255,255,0.4) dashed;
+        border: 1px rgba(0,0,0,0.3) dashed;
+        padding: 4px 10px 4px 20px;
+        text-decoration: none;
+        color: #461f1f;
+        white-space: nowrap;
+    }
+
+        .ticket .nner:hover {
+            color: rgba(0,0,0,0.5);
+        }
+
+        .ticket .inner:after {
+            content: "";
+            position: absolute !important;
+            z-index: 100;
+            bottom: 0;
+            left: 0;
+            border-right: #F2F2F2 7px solid;
+            border-top: #F2F2F2 7px solid;
+            -moz-border-radius: 0 20px 0 0;
+            -webkit-border-radius: 0 20px 0 0;
+            border-radius: 0 20px 0 0;
+        }
+
+        .ticket .inner:before {
+            content: "";
+            position: absolute !important;
+            z-index: 1000;
+            bottom: 0;
+            right: 0;
+            border-left: #F2F2F2 7px solid;
+            border-top: #F2F2F2 7px solid;
+            -moz-border-radius: 20px 0 0 0;
+            -webkit-border-radius: 20px 0 0 0;
+            border-radius: 20px 0 0 0;
+        }
+
+    .ticket .circle {
+        position: absolute !important;
+        z-index: 100;
+        border: 5px #F2F2F2 solid;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        margin-top: -5px;
+        width: 0;
+        height: 0;
+        top: 50%;
+        left: 8px;
+        -moz-box-shadow: 0 -1px 0 rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.3);
+        -webkit-box-shadow: 0 -1px 0 rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.3);
+        box-shadow: 0 -1px 0 rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.3);
+    }
+
+
+/*Ticket Taken*/
+
+.ticketTaken {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    position: relative !important;
+    background: #faf2f2;
+    float: left;
+    padding: 7px 3px;
+    margin: 0 5px 5px 0;
+}
+
+    .ticketTaken:after {
+        content: "";
+        position: absolute !important;
+        z-index: 100;
+        top: 0;
+        left: 0;
+        border-right: #F2F2F2 7px solid;
+        border-bottom: #F2F2F2 7px solid;
+        -moz-border-radius: 0 0 20px 0;
+        -webkit-border-radius: 0 0 20px 0;
+        border-radius: 0 0 20px 0;
+    }
+
+    .ticketTaken:before {
+        content: "";
+        position: absolute !important;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        border-left: #F2F2F2 7px solid;
+        border-bottom: #F2F2F2 7px solid;
+        -moz-border-radius: 0 0 0 20px;
+        -webkit-border-radius: 0 0 0 20px;
+        border-radius: 0 0 0 20px;
+    }
+
+    .ticketTaken .inner {
+        -moz-outline: 1px rgba(255,255,255,0.4) dashed;
+        outline: 1px rgba(255,255,255,0.4) dashed;
+        border: 1px rgba(0,0,0,0.3) dashed;
+        padding: 4px 10px 4px 20px;      
+        color: #e2d8d8 !important;
+        text-decoration: line-through;
+        white-space: nowrap;
+    }
+
+        .ticketTaken .inner:hover {
+            color: rgba(0,0,0,0.5);
+        }
+
+        .ticketTaken .inner:after {
+            content: "";
+            position: absolute !important;
+            z-index: 100;
+            bottom: 0;
+            left: 0;
+            border-right: #F2F2F2 7px solid;
+            border-top: #F2F2F2 7px solid;
+            -moz-border-radius: 0 20px 0 0;
+            -webkit-border-radius: 0 20px 0 0;
+            border-radius: 0 20px 0 0;
+        }
+
+        .ticketTaken .inner:before {
+            content: "";
+            position: absolute !important;
+            z-index: 1000;
+            bottom: 0;
+            right: 0;
+            border-left: #F2F2F2 7px solid;
+            border-top: #F2F2F2 7px solid;
+            -moz-border-radius: 20px 0 0 0;
+            -webkit-border-radius: 20px 0 0 0;
+            border-radius: 20px 0 0 0;
+        }
+
+    .ticketTaken .circle {
+        position: absolute !important;
+        z-index: 100;
+        border: 5px #F2F2F2 solid;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        margin-top: -5px;
+        width: 0;
+        height: 0;
+        top: 50%;
+        left: 8px;
+        -moz-box-shadow: 0 -1px 0 rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.3);
+        -webkit-box-shadow: 0 -1px 0 rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.3);
+        box-shadow: 0 -1px 0 rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,0.3);
+    }

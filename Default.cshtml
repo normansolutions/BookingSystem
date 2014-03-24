@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "_SiteLayout.cshtml";
+    Page.Title = "Home";
+    var emailAddress = HttpUtility.UrlEncode(Request.QueryString["e"]);
+
+    var db = Database.Open("Booking");
+
+    var eventDetailsSQL = "select * from BookingSys_EventDetailsView where released = @0";
+
+    var eventDetails = db.Query(eventDetailsSQL, '1');
+
+    Response.Cache.SetExpires(DateTime.Now.AddSeconds(3600));
+    Response.Cache.SetCacheability(HttpCacheability.Public);
+    
+    
+}
+<section id="mainText">
+    <div class="row">
+        <div class="ten columns centered">
+            <div class="row">
+                @foreach (var e in eventDetails)
+                {
+                    <div class="four columns">
+                        <div class="box6">
+                            <a href="~/Book/@e.id/?e=@emailAddress">
+                                <div class="ticketFont">@e.EventDescription</div>
+                                <div class="centeredText">
+                                    <div class="calendar">
+                                        <span class="month">@e.DateStart.ToString("MMMM")</span>
+                                        <span class="dayName">@e.DateStart.ToString("dddd")</span>
+                                        <span class="day">@e.DateStart.ToString("dd")</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="~/Book/@e.id/?e=@emailAddress" class="round button small">Book for @e.eventName</a>
+                        </div>
+                    </div>                
+                }
+            </div>
+        </div>
+    </div>
+</section>
+@section baseScript{
+
+}

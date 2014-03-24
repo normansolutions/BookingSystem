@@ -1,0 +1,45 @@
+﻿@using System.Web.Optimization;
+@using Microsoft.AspNet.SignalR;
+
+
+
+@{
+    
+    WebMail.SmtpServer = "saturn";
+    WebMail.EnableSsl = false;
+    WebMail.UserName = "EmailSendAccount";
+    WebMail.Password = "Shaftes1";
+    WebMail.From = "ictdepartment@st-marys-shaftesbury.co.uk";
+
+    var bundles = BundleTable.Bundles;
+
+    bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+           "~/js/release/modernizr*"));
+
+
+    bundles.Add(new ScriptBundle("~/bundles/js").Include(
+                "~/js/release/foundation.min.js",
+                "~/js/release/app.js",
+                "~/js/release/json.min.js"             
+                ));
+                
+    bundles.Add(new ScriptBundle("~/bundles/booking").Include(            
+                "~/js/release/jquery.validate.min.js",  
+                "~/js/release/mainScript.js"                              
+                ));                
+
+
+    bundles.Add(new StyleBundle("~/bundles/foundation").Include(
+				"~/css/normalize.css",
+                "~/css/foundation.css"));
+
+    bundles.Add(new StyleBundle("~/bundles/app").Include(
+                "~/css/app.css",
+                "~/css/tickets.css",
+                "~/css/Box.css",
+                "~/css/Calendar.css"));
+
+    bundles.Add(new StyleBundle("~/bundles/cssie").Include(
+                "~/css/ie.css"));                
+
+}
